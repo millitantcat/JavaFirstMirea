@@ -2,15 +2,32 @@ package ru.mirea.task8.shapes;
 
 import java.awt.*;
 
-public class Rectangle extends Shape {
+public class Rectangle extends Shape{
+    private int width = 200;
+    private int height = 100;
 
-    Rectangle(int x1, int x2, int y1, int y2) {
-        super(x1, y1, x2, y2);
+    public Rectangle(){}
+
+    public Rectangle(int width, int height) {
+        this.width = width;
+        this.height = height;
     }
 
-    @Override
-    public void paint(Graphics g) {
-        getColor();
-        g.fillRect(getX1(), getY1(), getX2(), getY2());
+    public void setWidth(int width) {
+        this.width = width;
     }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+
 }
