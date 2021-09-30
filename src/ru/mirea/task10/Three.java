@@ -6,9 +6,14 @@ import java.util.Scanner;
 public class Three {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
 
-        for (int i = 1; i <= n; i++)
-            System.out.print(i + " ");
+        if (a > b)
+            for (int i = a; i <= b; i++)
+                System.out.print(i + " ");
+        else
+            for (int i = a; i >= b; i--)
+                System.out.print(i + " ");
     }
 }

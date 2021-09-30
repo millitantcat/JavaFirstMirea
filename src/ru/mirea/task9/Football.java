@@ -10,9 +10,9 @@ public class Football extends JFrame
     int milan = 0;
     private JButton buttonMil = new JButton("AC Milan");
     private JButton buttonMad = new JButton("Real Madrid");
-    private JLabel labelRes = new JLabel("Result: "+madrid+" X "+milan);
-    private JLabel labelLast = new JLabel("Last Scorer: N/A");
-    private JLabel labelWin = new JLabel("Winner: Draw");
+    private JLabel labelRes = new JLabel("Результат: "+madrid+" X "+milan);
+    private JLabel labelLast = new JLabel("Последний счёт: N/A");
+    private JLabel labelWin = new JLabel("Победитель: Ничья");
 
 
     public Football()
@@ -39,14 +39,14 @@ public class Football extends JFrame
         public void actionPerformed (ActionEvent e)
         {
             madrid += 1;
-            labelRes.setText("Result: "+madrid+" X "+milan);
-            labelLast.setText("Last scorer: Madrid");
+            labelRes.setText("Результат: "+madrid+" X "+milan);
+            labelLast.setText("Последний забивший: Madrid");
             if (madrid > milan)
-                labelWin.setText("Winner: Madrid");
+                labelWin.setText("Победитель: Madrid");
             else if (milan > madrid)
-                labelWin.setText("Winner: Milan");
+                labelWin.setText("Победитель: Milan");
             else
-                labelWin.setText("Winner: Draw");
+                labelWin.setText("Победитель: Ничья");
         }
     }
 
@@ -55,14 +55,14 @@ public class Football extends JFrame
         public void actionPerformed (ActionEvent e)
         {
             milan += 1;
-            labelRes.setText("Result: "+madrid+" X "+milan);
-            labelLast.setText("Last scorer: Milan");
+            labelRes.setText("Результат: "+madrid+" X "+milan);
+            labelLast.setText("Последний забивший: Milan");
             if (madrid > milan)
-                labelWin.setText("Winner: Madrid");
+                labelWin.setText("Победитель: Madrid");
             else if (milan > madrid)
-                labelWin.setText("Winner: Milan");
+                labelWin.setText("Победитель: Milan");
             else
-                labelWin.setText("Winner: Draw");
+                labelWin.setText("Победтель: Ничья");
         }
     }
 }
