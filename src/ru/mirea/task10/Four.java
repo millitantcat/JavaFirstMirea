@@ -1,37 +1,22 @@
 package ru.mirea.task10;
 
-import java.io.IOException;
-import java.util.Scanner;
-
 public class Four {
-    public static int pow(int value, int powValue) {
-        return (int) Math.pow(value, powValue);
-    }
-
-    public static void main(String[] args) throws IOException {
-        int fsum = 0, fcnt = 0, scnt = 0;
-
-        Scanner scanner = new Scanner(System.in);
-        fcnt = scanner.nextInt();
-        fsum = scanner.nextInt();
-
-        int i = pow(10, fcnt - 1);
-
-        while (i < pow(10, fcnt)) {
-            int ssum = 0, num = i;
-
-            while (num == 1) {
-                ssum += num % 10;
-                num /= 10;
+    public static int recursion(int len, int sum, int k, int s) {
+        if (len == k) {
+            if (sum == s) {
+                return 1;
+            } else {
+                return 0;
             }
-
-            if (ssum == fsum) {
-                System.out.print(i + " ");
-                scnt++;
-            }
-            i++;
         }
-        System.out.print("\nCount of this numbers: " + scnt);
-        System.out.println();
+        int c = (len == 0 ? 1 : 0);
+        int res = 0;
+        for (int i = c; i < 10; i++) {
+            res += recursion(len + 1, sum + i, k, s);
+        }
+        return res;
+    }
+    public static void main(String[] args) {
+        System.out.println(recursion(0, 0, 3, 15));
     }
 }

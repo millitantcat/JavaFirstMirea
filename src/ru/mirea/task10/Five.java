@@ -1,14 +1,15 @@
 package ru.mirea.task10;
 
-import java.io.IOException;
-import java.util.Scanner;
-
 public class Five {
-    public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-
-        for (int i = 1; i <= n; i++)
-            System.out.print(i + " ");
+    public static int recursion(int n) {
+        if (n < 10) {
+            return n;
+        }
+        else {
+            return n % 10 + recursion(n / 10);
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println(recursion(123));
     }
 }
