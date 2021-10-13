@@ -7,7 +7,8 @@ public class File {
     public static void main(String[] args) {
 
         //ввод в файл
-        try(FileWriter writer = new FileWriter("C://Users//maxim//IdeaProjects//JavaFirstMirea//src//ru//mirea//task15//test.txt", false))
+        //try(FileWriter writer = new FileWriter("C://Users//maxim//IdeaProjects//JavaFirstMirea//src//ru//mirea//task15//test.txt", false))
+        try(FileWriter writer = new FileWriter("/Users/maksimandrievskij/IdeaProjects/JavaFirstMirea/src/ru/mirea/task15/test.txt", false))
         {
             Scanner scanner = new Scanner(System.in);
             String textIn = scanner.nextLine();
@@ -23,7 +24,8 @@ public class File {
         }
 
         //вывод из файла
-        try(FileReader reader = new FileReader("C://Users//maxim//IdeaProjects//JavaFirstMirea//src//ru//mirea//task15//test1.txt"))
+        //try(FileReader reader = new FileReader("C://Users//maxim//IdeaProjects//JavaFirstMirea//src//ru//mirea//task15//test1.txt"))
+        try(FileReader reader = new FileReader("/Users/maksimandrievskij/IdeaProjects/JavaFirstMirea/src/ru/mirea/task15/test1.txt"))
         {
             // читаем посимвольно
             int c;
