@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //String filePath = "C:/Users/maxim/IdeaProjects/JavaFirstMirea/src/ru/mirea/task15/myfile.txt"; //win
-        String filePath = "/Users/maksimandrievskij/IdeaProjects/JavaFirstMirea/src/ru/mirea/task15/myfile.txt"; //mac
+        String filePath = "./src/ru/mirea/task15/myfile.txt";
         Scanner scanner = new Scanner(System.in);
         String text = scanner.nextLine();
 

@@ -7,8 +7,7 @@ public class File {
     public static void main(String[] args) {
 
         //ввод в файл
-        //try(FileWriter writer = new FileWriter("C://Users//maxim//IdeaProjects//JavaFirstMirea//src//ru//mirea//task15//test.txt", false))
-        try(FileWriter writer = new FileWriter("/Users/maksimandrievskij/IdeaProjects/JavaFirstMirea/src/ru/mirea/task15/test.txt", false))
+        try(FileWriter writer = new FileWriter("./src/ru/mirea/task15/test.txt", false))
         {
             Scanner scanner = new Scanner(System.in);
             String textIn = scanner.nextLine();
