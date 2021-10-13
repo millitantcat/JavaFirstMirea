@@ -2,7 +2,7 @@ package ru.mirea.task14;
 import java.util.ArrayDeque;
 
 public class Main {
-
+    //начало тут
     public static String work(int word[]){ String res = "";
         ArrayDeque<Integer> wordArray = new ArrayDeque<Integer>();
         for(int i = 0; i<word.length;i++){
