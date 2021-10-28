@@ -3,17 +3,20 @@ package ru.mirea.task16;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class registeredForm extends JFrame {
 
     private JPanel regPanel;
-    private JTextField textField1;
+    private JTextField loginField1;
     private JPasswordField passwordField1;
     private JPasswordField passwordField2;
     private JButton Registration;
-    private JComboBox comboBox1;
     private JButton backButton;
     private JButton regButton;
     private JLabel nameLabel;
@@ -21,6 +24,30 @@ public class registeredForm extends JFrame {
     private JLabel rePasswordLabel;
     private JLabel enterYourBDLabel;
     private JCheckBox showPasswordCheckBox;
+    private JTextField nameField1;
+
+    //проверка на уже существующий аккаунт
+    public  boolean isUsernameExist(String un) {
+        boolean uExist = false;
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            ps = con.prepareStatement("SELECT * FROM `user` WHERE `login` = ?");
+            ps.setString(1, loginField1.getText());
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                uExist = true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return uExist;
+    }
 
     public registeredForm () {
         super();
@@ -55,6 +82,36 @@ public class registeredForm extends JFrame {
                     passwordField1.setEchoChar(def);
                     passwordField2.setEchoChar(def2);
                 }
+            }
+        });
+
+        //кнопка регистрации
+        regButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Connection con = myConnection.getConnection();
+                PreparedStatement ps;
+
+                try{
+                    ps = con.prepareStatement("INSERT INTO `user`(`login`, `pass`, `name`) VALUES (?,?,?)");
+                    ps.setString(1, loginField1.getText());
+                    ps.setString(2, String.valueOf(passwordField1.getPassword()));
+                    ps.setString(3, nameField1.getText());
+
+                    if (isUsernameExist(loginField1.getText())) {
+                        JOptionPane.showMessageDialog(null, "Username Already Exists");
+                    } else {
+                        if (ps.executeUpdate() != 0){
+                            JOptionPane.showMessageDialog(null, "Account Created!");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Something Wrong :c");
+                        }
+                    }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(registeredForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
         });
     }

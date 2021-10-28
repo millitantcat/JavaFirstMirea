@@ -6,6 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class loginForm extends JFrame {
     private JPanel loginPanel;
@@ -37,8 +41,6 @@ public class loginForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 logValue = loginField.getText();
                 loginField.selectAll();
-
-                System.out.println(logValue);
             }
         });
         //получение пароля
@@ -47,25 +49,11 @@ public class loginForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 pasValue = passwordField.getText();
                 passwordField.selectAll();
-
-                System.out.println(pasValue);
             }
         });
 
         System.out.println(logValue);
         System.out.println(pasValue);
-
-        //обработчик для кнопки
-        buttonAuth.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (logValue == "admin" && pasValue == "1111") {
-                    JOptionPane.showMessageDialog(null, "Работает!");
-                }
-                else
-                    JOptionPane.showMessageDialog(null, "Не работает!");
-            }
-        });
 
         //показать/скрыть пароль
         showPasswordCheckBox.addActionListener(new ActionListener() {
@@ -102,6 +90,31 @@ public class loginForm extends JFrame {
             public void mousePressed(MouseEvent e) {
                 super.mousePressed(e);
                 newAccountLabel.setForeground(Color.getColor("#0000CD"));
+            }
+        });
+
+        //кнопка входа
+        buttonAuth.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Connection con = myConnection.getConnection();
+                PreparedStatement ps;
+                ResultSet rs;
+
+                try {
+                    ps = con.prepareStatement("SELECT * FROM `user` WHERE `login` = ? AND `pass` = ?");
+                    ps.setString(1, loginField.getText());
+                    ps.setString(2, String.valueOf(passwordField.getPassword()));
+                    rs = ps.executeQuery();
+
+                    if (rs.next()) {
+                        JOptionPane.showMessageDialog(null, "Logged!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Login Error!");
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }
