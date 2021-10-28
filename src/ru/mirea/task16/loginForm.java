@@ -52,9 +52,6 @@ public class loginForm extends JFrame {
             }
         });
 
-        System.out.println(logValue);
-        System.out.println(pasValue);
-
         //показать/скрыть пароль
         showPasswordCheckBox.addActionListener(new ActionListener() {
             char def = passwordField.getEchoChar();
