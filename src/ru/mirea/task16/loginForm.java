@@ -16,9 +16,13 @@ public class loginForm extends JFrame {
     private JPasswordField passwordField;
     private JCheckBox showPasswordCheckBox;
     private JLabel newAccountLabel;
+    //глобальные переменные
+    public static String logValue;
+    public static String pasValue;
 
-    public loginForm(String title){
-        super(title);
+    public loginForm(){
+        super();
+        setTitle("Login");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(loginPanel);
         this.pack();
@@ -27,11 +31,39 @@ public class loginForm extends JFrame {
         //размер окна
         setSize(285, 180);
 
+        //получение логина
+        loginField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logValue = loginField.getText();
+                loginField.selectAll();
+
+                System.out.println(logValue);
+            }
+        });
+        //получение пароля
+        passwordField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pasValue = passwordField.getText();
+                passwordField.selectAll();
+
+                System.out.println(pasValue);
+            }
+        });
+
+        System.out.println(logValue);
+        System.out.println(pasValue);
+
         //обработчик для кнопки
         buttonAuth.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Работает!");
+                if (logValue == "admin" && pasValue == "1111") {
+                    JOptionPane.showMessageDialog(null, "Работает!");
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "Не работает!");
             }
         });
 
@@ -52,6 +84,7 @@ public class loginForm extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
                 registeredForm rgf = new registeredForm();
                 rgf.setVisible (true);
                 rgf.pack();
@@ -71,10 +104,5 @@ public class loginForm extends JFrame {
                 newAccountLabel.setForeground(Color.getColor("#0000CD"));
             }
         });
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new loginForm("Login");
-        frame.setVisible(true);
     }
 }
