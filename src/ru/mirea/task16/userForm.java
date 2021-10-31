@@ -7,6 +7,21 @@ public class userForm extends JFrame{
     private JLabel USERINFOLabel;
     private JPanel userPanel;
     private JPanel topPanel;
+    private JPanel infoPanel;
+    private JTextField phoneField;
+    private JTextField idField;
+    private JTextField nameField;
+    private JTextArea adressArea;
+    private JLabel emailLabel;
+    private JLabel phoneLabel;
+    private JLabel IDLabel;
+    private JLabel nameLabel;
+    private JLabel adressLabel;
+    private JTextField checkField;
+    private JTextField countField;
+    private JLabel checkLabel;
+    private JLabel countLabel;
+    private JComboBox emailBox;
 
     public userForm() {
         super();
@@ -15,5 +30,11 @@ public class userForm extends JFrame{
         this.setContentPane(userPanel);
         this.pack();
         this.setLocationRelativeTo(null);
+        setSize(750, 500);
+    }
+
+    public static void main(String[] args) {
+        userForm form = new userForm();
+        form.setVisible(true);
     }
 }
