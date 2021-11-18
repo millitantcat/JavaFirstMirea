@@ -3,7 +3,7 @@ package ru.mirea.task16;
 import javax.swing.*;
 
 public class userForm extends JFrame{
-    private JLabel usernameLabel;
+    public JLabel usernameLabel;
     private JLabel USERINFOLabel;
     private JPanel userPanel;
     private JPanel topPanel;
@@ -21,7 +21,7 @@ public class userForm extends JFrame{
     private JTextField countField;
     private JLabel checkLabel;
     private JLabel countLabel;
-    private JComboBox emailBox;
+    private JTextField emailField;
 
     public userForm() {
         super();

@@ -75,7 +75,7 @@ public class loginForm extends JFrame {
                 rgf.pack();
                 rgf.setLocationRelativeTo(null);
                 rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                rgf.setSize(300, 500);
+                setSize(300, 500);
                 //скрытие окна логина
                 setVisible(false);
             }
@@ -99,13 +99,23 @@ public class loginForm extends JFrame {
                 ResultSet rs;
 
                 try {
-                    ps = con.prepareStatement("SELECT * FROM `user` WHERE `login` = ? AND `pass` = ?");
+                    ps = con.prepareStatement("SELECT `login`, `name` FROM `user` WHERE `login` = ? AND `pass` = ?");
                     ps.setString(1, loginField.getText());
                     ps.setString(2, String.valueOf(passwordField.getPassword()));
                     rs = ps.executeQuery();
 
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Logged!");
+                        //JOptionPane.showMessageDialog(null, "Logged!");
+                        userForm ugf = new userForm();
+                        ugf.setVisible (true);
+                        ugf.pack();
+                        ugf.setLocationRelativeTo(null);
+                        ugf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        ugf.setSize(750, 500);
+                        //установка имени в лейбле usernameLabel
+                        ugf.usernameLabel.setText(rs.getString(1));
+                        //скрытие окна логина
+                        setVisible(false);
                     } else {
                         JOptionPane.showMessageDialog(null, "Login Error!");
                     }
