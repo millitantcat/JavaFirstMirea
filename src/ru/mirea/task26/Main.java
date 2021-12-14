@@ -1,6 +1,7 @@
-package ru.mirea.task23;
+package ru.mirea.task26;
 
 interface FillStrategy {
+
     public void fill();
 }
 
@@ -13,6 +14,7 @@ class HybridFillStrategy implements FillStrategy {
 }
 
 class F1PitstopStrategy implements FillStrategy {
+
     @Override
     public void fill() {
         System.out.println("Пит-стоп для заправки!");
@@ -25,8 +27,8 @@ class StandartFillStrategy implements FillStrategy {
         System.out.println("Стандартная заправка бензина!");
     }
 }
-
 class Auto {
+
     FillStrategy fillStrategy;
     String a;
 
