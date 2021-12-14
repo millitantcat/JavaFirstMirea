@@ -1,6 +1,9 @@
 package ru.mirea.task16;
 
 import javax.swing.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class userForm extends JFrame{
     public JLabel usernameLabel;
@@ -31,6 +34,10 @@ public class userForm extends JFrame{
         this.pack();
         this.setLocationRelativeTo(null);
         setSize(750, 500);
+        /**/
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
     }
 
     public static void main(String[] args) {
