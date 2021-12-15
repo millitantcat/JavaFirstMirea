@@ -1,84 +1,50 @@
 package ru.mirea.task23;
 
-interface FillStrategy {
-    public void fill();
-}
+class LuxuryAuto {
 
-class HybridFillStrategy implements FillStrategy {
+    private String model;
+    private int manufactureYear;
+    private int dollarPrice;
 
-    @Override
-    public void fill() {
-        System.out.println("Заправляем гибрид!");
+    public LuxuryAuto(String model, int manufactureYear, int dollarPrice) {
+        this.model = model;
+        this.manufactureYear = manufactureYear;
+        this.dollarPrice = dollarPrice;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LuxuryAuto that = (LuxuryAuto) o;
+
+        if (manufactureYear != that.manufactureYear) return false;
+        if (dollarPrice != that.dollarPrice) return false;
+        return model.equals(that.model);
+    }
+    public int hashCode() {
+        int result = model == null ? 0 : model.hashCode();
+        result = 31 * result + manufactureYear;
+        result = 31 * result + dollarPrice;
+        return result;
     }
 }
 
-class F1PitstopStrategy implements FillStrategy {
-    @Override
-    public void fill() {
-        System.out.println("Пит-стоп для заправки!");
-    }
-}
-
-class StandartFillStrategy implements FillStrategy {
-    @Override
-    public void fill() {
-        System.out.println("Стандартная заправка бензина!");
-    }
-}
-
-class Auto {
-    FillStrategy fillStrategy;
-    String a;
-
-    public void fill() {
-        fillStrategy.fill();
-    }
-
-    public void gas() {
-        System.out.println(a+" Едем вперед");
-    }
-
-    public void stop() {
-        System.out.println("Тормозим!");
-    }
-
-}
-class F1Car extends Auto {
-
-    public F1Car() {
-        a = "F1Car";
-        this.fillStrategy = new F1PitstopStrategy();
-    }
-}
-
-class HybridAuto extends Auto {
-
-    public HybridAuto() {
-        a = "Hybrid";
-        this.fillStrategy = new HybridFillStrategy();
-    }
-}
-
-class Sedan extends Auto {
-
-    public Sedan() {
-        a = "Sedan";
-        this.fillStrategy = new StandartFillStrategy();
-    }
-}
 
 public class Main {
     public static void main(String[] args) {
 
-        Auto sedan = new Sedan();
-        Auto hybrid = new HybridAuto();
-        Auto f1car = new F1Car();
+        LuxuryAuto bmw1 = new LuxuryAuto("BMW 530i", 2019, 70000000);
+        LuxuryAuto bmw2 = new LuxuryAuto("BMW 730Li", 2019, 70000000);
+        LuxuryAuto bmw3 = new LuxuryAuto("BMW 530i", 2019, 70000000);
 
-        sedan.fill();
-        hybrid.fill();
-        f1car.fill();
-        sedan.gas();
-        hybrid.gas();
-        f1car.gas();
+        System.out.println("bmw1 == bmw2? "+bmw1.equals(bmw2));
+        System.out.println("bmw1 == bmw3? "+bmw1.equals(bmw3));
+
+        System.out.println("Какие у них хэш-коды?");
+        System.out.println(bmw1.hashCode());
+        System.out.println(bmw2.hashCode());
+        System.out.println(bmw3.hashCode());
     }
+
 }
