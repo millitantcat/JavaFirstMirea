@@ -1,0 +1,191 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "Practic.src.ru.mirea.task26.PayStrategy#pay(Client)",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "Practic.src.ru.mirea.task26.PayStrategy"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_114148 { 
+   	label=src
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_894336371 { 
+   	label=ru
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   subgraph cluster_1342726961 { 
+   	label=PayStrategy
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   PayStrategy1712615262XXXpay2021122027[
+	label="+ pay()"
+	style=filled
+	fillcolor=white
+	tooltip="PayStrategy
+
+null"
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_1648120718 { 
+   	label=StrategyEx
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   StrategyEx1712615262XXXmain1859653459[
+	label="+ main()"
+	style=filled
+	fillcolor=white
+	tooltip="StrategyEx
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_23534542 { 
+   	label=VisaPayStrategy
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   VisaPayStrategy1712615262XXXpay2021122027[
+	label="+ pay()"
+	style=filled
+	fillcolor=white
+	tooltip="VisaPayStrategy
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_683189577 { 
+   	label=Client
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Client1712615262XXXpay0[
+	label="+ pay()"
+	style=filled
+	fillcolor=white
+	tooltip="Client
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_934759813 { 
+   	label=QiwiPayStrategy
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   QiwiPayStrategy1712615262XXXpay2021122027[
+	label="+ pay()"
+	style=filled
+	fillcolor=white
+	tooltip="QiwiPayStrategy
+
+null"
+	fontcolor=darkgreen
+];
+} 
+} 
+} 
+
+'edges    
+Client1712615262XXXpay0 -> PayStrategy1712615262XXXpay2021122027;
+PayStrategy1712615262XXXpay2021122027 -> QiwiPayStrategy1712615262XXXpay2021122027;
+PayStrategy1712615262XXXpay2021122027 -> VisaPayStrategy1712615262XXXpay2021122027;
+StrategyEx1712615262XXXmain1859653459 -> Client1712615262XXXpay0;
+    
+}
+@enduml
