@@ -1,51 +1,30 @@
-package ru.mirea.task29;
-import java.io.Serializable;
-import java.util.Arrays;
+package Practic.src.ru.mirea.task29;
 
-public class Serial implements Serializable {
+import java.io.*;
 
+class CurrencyInfo implements Serializable {
     private static final long serialVersionUID = 1L;
+    private int cash = 10000;
 
-    private String[] territoriesInfo;
-    private String[] resourcesInfo;
-    private String[] diplomacyInfo;
-
-    public Serial(String[] territoriesInfo, String[] resourcesInfo, String[] diplomacyInfo){
-        this.territoriesInfo = territoriesInfo;
-        this.resourcesInfo = resourcesInfo;
-        this.diplomacyInfo = diplomacyInfo;
+    public int getCash() {
+        return cash;
     }
+}
 
-    public String[] getTerritoriesInfo() {
-        return territoriesInfo;
-    }
-
-    public void setTerritoriesInfo(String[] territoriesInfo) {
-        this.territoriesInfo = territoriesInfo;
-    }
-
-    public String[] getResourcesInfo() {
-        return resourcesInfo;
-    }
-
-    public void setResourcesInfo(String[] resourcesInfo) {
-        this.resourcesInfo = resourcesInfo;
-    }
-
-    public String[] getDiplomacyInfo() {
-        return diplomacyInfo;
-    }
-
-    public void setDiplomacyInfo(String[] diplomacyInfo) {
-        this.diplomacyInfo = diplomacyInfo;
-    }
-
-    @Override
-    public String toString() {
-        return "SavedGame{" +
-                "territoriesInfo=" + Arrays.toString(territoriesInfo) +
-                ", resourcesInfo=" + Arrays.toString(resourcesInfo) +
-                ", diplomacyInfo=" + Arrays.toString(diplomacyInfo) +
-                '}';
+public class Serial {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        CurrencyInfo currencyInfo = new CurrencyInfo();
+        System.out.println("Сериализация...");
+        FileOutputStream outputStream = new FileOutputStream("save.ser");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+        objectOutputStream.writeObject(currencyInfo);
+        objectOutputStream.close();
+        currencyInfo = null;
+        System.out.println("currencyInfo: " + currencyInfo);
+        System.out.println("Десериализация...");
+        FileInputStream fileInputStream = new FileInputStream("save.ser");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        currencyInfo = (CurrencyInfo) objectInputStream.readObject();
+        System.out.println("Cash: " +currencyInfo.getCash());
     }
 }

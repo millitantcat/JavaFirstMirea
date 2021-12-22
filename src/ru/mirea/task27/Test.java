@@ -8,12 +8,12 @@ import java.util.Set;
 public class Test {
     public static void main(String[] args) {
         HashMap<Integer, String> idAndNames = new HashMap<>();
-        idAndNames.put(123456, "Мария");
-        idAndNames.put(234561, "Иван");
-        idAndNames.put(345612, "Дарья");
+        idAndNames.put(123456, "Паша");
+        idAndNames.put(234561, "Маша");
+        idAndNames.put(345612, "Саша");
         System.out.println(idAndNames);
 
-        idAndNames.put(345612, "Матвей");
+        idAndNames.put(345612, "Коля");
         System.out.println(idAndNames);
 
         String n1 = idAndNames.get(123456);
@@ -23,7 +23,7 @@ public class Test {
         System.out.println(idAndNames);
 
         System.out.println(idAndNames.containsKey(111111));
-        System.out.println(idAndNames.containsValue("Мария"));
+        System.out.println(idAndNames.containsValue("Маша"));
 
         Set<Integer> keys = idAndNames.keySet();
         System.out.println("Ключи: " + keys);
@@ -38,12 +38,12 @@ public class Test {
         HashMap<Integer, String> idAndNames1 = new HashMap<>();
         HashMap<Integer, String> idAndNames2 = new HashMap<>();
 
-        idAndNames1.put(123456, "Лия");
-        idAndNames1.put(234561, "Майкл");
-        idAndNames1.put(345612, "Крис");
+        idAndNames1.put(123456, "Вася");
+        idAndNames1.put(234561, "Петя");
+        idAndNames1.put(345612, "Катя");
 
         idAndNames2.put(654321, "Саша");
-        idAndNames2.put(543216, "Даша");
+        idAndNames2.put(543216, "Маща");
 
         idAndNames1.putAll(idAndNames2);
         for(Map.Entry en:idAndNames1.entrySet()){

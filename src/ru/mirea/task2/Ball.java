@@ -1,33 +1,18 @@
 package ru.mirea.task2;
 
-public class Ball {
+public class Ball
+{
+    private int diameter;
     private String color;
-    private int dim;
-    public Ball(String c, int d)
+
+    public Ball(int diameter, String color)
     {
-        color = c;
-        dim = d;
+        this.diameter = diameter;
+        this.color = color;
     }
-    public Ball(String c)
+
+    public String toString()
     {
-        color = c;
-        dim = 20;
-    }
-    public Ball()
-    {
-        color = "Black";
-        dim = 20;
-    }
-    public void setColor(String c)
-    {
-        color = c;
-    }
-    public void setDim(int d)
-    {
-        dim = d;
-    }
-    public void OutSC()
-    {
-        System.out.printf("Ball color is %s and diameter is %d\n", color, dim);
+        return "Ball's " + "diameter is " + diameter +" and color is " + color;
     }
 }

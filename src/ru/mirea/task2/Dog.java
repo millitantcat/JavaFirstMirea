@@ -1,46 +1,44 @@
 package ru.mirea.task2;
 
-public class Dog {
-    private String name;
+public class Dog
+{
     private int age;
+    private String name;
 
-    public Dog(String n, int a)
-    {
-        name = n;
-        age = a;
-    }
-    public Dog(String n)
-    {
-        name = n;
-        age = 0;
-    }
-    public Dog()
-    {
-        name = "Pup";
-        age = 0;
-    }
-    public void SetAge(int age)
+    public Dog(int age, String name)
     {
         this.age = age;
-    }
-    public void SetName(String name)
-    {
         this.name = name;
     }
-    public String getName ()
-    {
-        return name;
-    }
+
     public int getAge()
     {
         return age;
     }
-    public String toString()
+
+    public String getName()
     {
-        return this.name+", age "+this.age;
+        return name;
     }
-    public void intoHumanAge()
+
+    public void setAge(int age)
+
     {
-        System.out.println(name+"'s age in human years is "+age*7+" years");
+        this.age = age;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public int toHumanAge()
+    {
+        return (age*7);
+    }
+
+    @Override
+    public String toString() {
+        return "Dog name is " +name+ " and age is " +age+ ". Age in human years is " +this.toHumanAge()+ ".";
     }
 }
